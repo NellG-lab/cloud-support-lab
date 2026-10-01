@@ -1,0 +1,2 @@
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           100M   92M  8.0M  92% /mnt/inc004-disk

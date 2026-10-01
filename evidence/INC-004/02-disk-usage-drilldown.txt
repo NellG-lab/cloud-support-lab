@@ -1,0 +1,4 @@
+92M	/mnt/inc004-disk/var
+92M	/mnt/inc004-disk/var/log
+92M	/mnt/inc004-disk/var/log/myapp
+92M	/mnt/inc004-disk/var/log/myapp/app.log
