@@ -1,0 +1,6 @@
+=== File after cleanup ===
+-rw-r--r-- 1 root root 0 Oct  1 12:29 /mnt/inc004-disk/var/log/myapp/app.log
+
+=== Filesystem after cleanup ===
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           100M     0  100M   0% /mnt/inc004-disk
