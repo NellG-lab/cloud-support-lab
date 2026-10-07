@@ -1,0 +1,14 @@
+=== Process 840 after remediation ===
+    PID TTY          TIME CMD
+
+=== Highest CPU consumers after remediation ===
+    PID USER     COMMAND         %CPU %MEM
+   1436 root     (udev-worker)    0.5  0.1
+   1432 root     (udev-worker)    0.5  0.1
+     96 root     systemd-udevd    0.1  0.3
+      1 root     systemd          0.1  0.4
+     50 root     systemd-journal  0.0  0.4
+    142 root     networkd-dispat  0.0  0.8
+    277 root     unattended-upgr  0.0  0.9
+    348 nellg    bash             0.0  0.1
+    394 nellg    systemd          0.0  0.3
