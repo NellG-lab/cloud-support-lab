@@ -1,0 +1,10 @@
+    PID USER     COMMAND         %CPU %MEM
+    741 root     (udev-worker)    0.6  0.1
+    737 root     (udev-worker)    0.6  0.1
+      1 root     systemd          0.4  0.4
+     96 root     systemd-udevd    0.2  0.3
+    142 root     networkd-dispat  0.1  0.8
+     50 root     systemd-journal  0.1  0.4
+    277 root     unattended-upgr  0.1  0.9
+    394 nellg    systemd          0.0  0.3
+    165 root     wsl-pro-service  0.0  0.4
