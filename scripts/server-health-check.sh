@@ -20,9 +20,20 @@ fi
 
 echo
 echo "=== Top CPU Processes ==="
-ps -eo pid,user,comm,%cpu,%mem --sort=-%cpu \
+ps -eo pid,user,comm,etimes,%cpu,%mem --sort=-%cpu \
 | awk 'NR==1 || ($3!="ps" && $3!="head" && $3!="awk" && $3!="tee")' \
 | head
+
+high_cpu_process=$(ps -eo pid,user,comm,etimes,%cpu --no-headers \
+| awk '$3!="ps" && $3!="head" && $3!="awk" && $3!="tee" && $4 >= 10 && $5 >= 80 {print; exit}')
+
+if [ -n "$high_cpu_process" ]; then
+    echo "[WARN] Persistent high CPU process detected:"
+    echo "$high_cpu_process"
+    overall_status="WARN"
+else
+    echo "[OK] No persistent high CPU process detected"
+fi
 
 echo
 echo "=== nginx Service Status ==="
