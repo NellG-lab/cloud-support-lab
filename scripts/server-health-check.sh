@@ -46,7 +46,7 @@ fi
 
 echo
 echo "=== Port 80 Listening ==="
-if ss -tuln | grep -q ':80'; then
+if ss -ltn 'sport = :80' | grep -q LISTEN; then
     echo "[OK] Port 80 is listening"
 else
     echo "[WARN] Port 80 is not listening"
