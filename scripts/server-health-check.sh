@@ -9,12 +9,24 @@ ps -eo pid,user,comm,%cpu,%mem --sort=-%cpu | head
 
 echo
 echo "=== nginx Service Status ==="
-systemctl is-active nginx
+if systemctl is-active --quiet nginx; then
+    echo "[OK] nginx is active"
+else
+    echo "[WARN] nginx is not active"
+fi
 
 echo
 echo "=== Port 80 Listening ==="
-ss -tuln | grep ':80'
+if ss -tuln | grep -q ':80'; then
+    echo "[OK] Port 80 is listening"
+else
+    echo "[WARN] Port 80 is not listening"
+fi
 
 echo
 echo "=== HTTP Response ==="
-curl -I http://localhost
+if curl -s -I http://localhost | grep -q "200 OK"; then
+    echo "[OK] Web server returned HTTP 200"
+else
+    echo "[WARN] Web server did not return HTTP 200"
+fi
