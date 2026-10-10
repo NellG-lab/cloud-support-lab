@@ -9,31 +9,11 @@ echo "================================"
 echo
 
 echo "=== Disk Usage ==="
-disk_usage=$(df -P / | awk 'NR==2 {print $5}' | tr -d '%')
-if [ "$disk_usage" -ge 80 ]; then
-    echo "[WARN] Disk usage is ${disk_usage}%"
-    overall_status="WARN"
-else
-    echo "[OK] Disk usage is ${disk_usage}%"
-fi
-
+df -h /
 
 echo
 echo "=== Top CPU Processes ==="
-ps -eo pid,user,comm,etimes,%cpu,%mem --sort=-%cpu \
-| awk 'NR==1 || ($3!="ps" && $3!="head" && $3!="awk" && $3!="tee")' \
-| head
-
-high_cpu_process=$(ps -eo pid,user,comm,etimes,%cpu --no-headers \
-| awk '$3!="ps" && $3!="head" && $3!="awk" && $3!="tee" && $4 >= 10 && $5 >= 80 {print; exit}')
-
-if [ -n "$high_cpu_process" ]; then
-    echo "[WARN] Persistent high CPU process detected:"
-    echo "$high_cpu_process"
-    overall_status="WARN"
-else
-    echo "[OK] No persistent high CPU process detected"
-fi
+ps -eo pid,user,comm,%cpu,%mem --sort=-%cpu | head
 
 echo
 echo "=== nginx Service Status ==="
